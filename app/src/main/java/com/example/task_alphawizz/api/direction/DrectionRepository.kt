@@ -5,12 +5,19 @@ import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.http.Query
 
 class DrectionRepository(private val directionRequests: DirectionRequests) : DrectionRepositoryI {
 
-    override fun getDrection(url: String): Observable<String> {
+    override fun getDrection(
+        mode: String,
+        transit_routing_preference: String,
+        origin: String,
+        destination: String,
+        key: String
+    ): Observable<String> {
         return Observable.create<String> { emitter ->
-            directionRequests.getDirection(url).enqueue(object : Callback<String> {
+            directionRequests.getDirection(mode,transit_routing_preference,origin,destination,key).enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     Log.i("kdsjcn", "shdvcjds  : " + response.body().toString())
                     Log.i("kdsjcn", "shdvcjds  : " + response.toString())
@@ -30,5 +37,7 @@ class DrectionRepository(private val directionRequests: DirectionRequests) : Dre
             })
         }
     }
+
+
 
 }

@@ -14,9 +14,13 @@ class MapsViewModel(var directionRepositoryI: DrectionRepositoryI) : ViewModel()
     var mutableLiveData: MutableLiveData<MapsState> = MutableLiveData()
     private var compositeDisposable = CompositeDisposable()
 
-    fun getDirection(url : String) {
+    fun getDirection(mode: String,
+                     transit_routing_preference: String,
+                     origin: String,
+                     destination: String,
+                     key: String) {
         compositeDisposable.add(
-            directionRepositoryI.getDrection(url)
+            directionRepositoryI.getDrection(mode,transit_routing_preference,origin,destination,key)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({

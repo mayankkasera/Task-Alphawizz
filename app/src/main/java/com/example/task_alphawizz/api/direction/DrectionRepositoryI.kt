@@ -4,6 +4,13 @@ import io.reactivex.Observable
 
 interface DrectionRepositoryI {
 
-    fun getDrection(url: String) : Observable<String>
+
+    fun getDrection(
+        mode: String,
+        transit_routing_preference: String,
+        origin: String,
+        destination: String,
+        key: String
+    ) : Observable<String>
 
 }
