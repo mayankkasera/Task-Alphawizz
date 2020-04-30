@@ -10,7 +10,6 @@ class DrectionRepository(private val directionRequests: DirectionRequests) : Dre
 
     override fun getDrection(url: String): Observable<String> {
         return Observable.create<String> { emitter ->
-
             directionRequests.getDirection(url).enqueue(object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: Response<String>) {
                     Log.i("kdsjcn", "shdvcjds  : " + response.body().toString())

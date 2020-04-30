@@ -1,7 +1,7 @@
 package com.example.task_alphawizz.di.component
 
 import android.content.Context
-import com.example.task_alphawizz.api.NetworkHelper
+import com.example.task_alphawizz.api.DataHelper
 import com.example.task_alphawizz.di.module.DataModule
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 interface NetworkComponent {
 
     fun getRetrofit() : Retrofit
-    fun inject(networkHelper: NetworkHelper)
+    fun inject(dataHelper: DataHelper)
 
 
 

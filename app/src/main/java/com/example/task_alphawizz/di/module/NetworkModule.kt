@@ -1,6 +1,7 @@
 package com.example.task_alphawizz.di.module
 
 import android.content.Context
+import com.example.task_alphawizz.api.direction.DirectionRequests
 import com.example.task_alphawizz.di.intersepter.AuthorizationInterceptor
 import dagger.Module
 import dagger.Provides
@@ -34,6 +35,11 @@ class NetworkModule {
     }
 
 
+    @Provides
+    @Singleton
+    fun provideDiscoverRequest(retrofit: Retrofit) : DirectionRequests {
+        return retrofit.create(DirectionRequests::class.java)
+    }
 
 
 
